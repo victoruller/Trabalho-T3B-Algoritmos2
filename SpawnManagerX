@@ -1,0 +1,50 @@
+//Cria os objetos que devem ser criados
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class SpawnManagerX : MonoBehaviour
+{
+    public GameObject[] ballPrefabs;
+    public GameObject[] portal;
+
+    private int spawnLimitXLeft = -19;
+    private int spawnLimitXRight = 19;
+    private int spawnPosY = 1;
+    private int x=0, z=0;
+    private int startDelay = 1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        //cria um número aleatório entre 3 e 5, e a função é invocada após esse tempo
+        //InvokeRepeating("SpawnRandomBall", startDelay, 1);
+        Vector3 spawnPos = new Vector3(10,spawnPosY,10);
+        Vector3 spawnPos2 = new Vector3(-17,spawnPosY,16);
+        Vector3 spawnPos3 = new Vector3(-2,spawnPosY,1);
+        Vector3 spawnPos4 = new Vector3(-2,spawnPosY,-4);
+        Vector3 port1Pos = new Vector3(3,spawnPosY,4);
+
+        // instantiate ball at random spawn location
+        int r = Random.Range(0, 0);
+        Instantiate(ballPrefabs[r], spawnPos, ballPrefabs[0].transform.rotation);
+        Instantiate(ballPrefabs[r], spawnPos2, ballPrefabs[0].transform.rotation);
+        Instantiate(ballPrefabs[r], spawnPos3, ballPrefabs[0].transform.rotation);
+        Instantiate(ballPrefabs[r], spawnPos4, ballPrefabs[0].transform.rotation);
+        Instantiate(portal[r], port1Pos, portal[0].transform.rotation);
+        
+    }
+
+    // Spawn random ball at random x position at top of play area
+   /* void SpawnRandomBall ()
+    {
+        // Generate random ball index and random spawn position
+      
+
+        Vector3 spawnPos = new Vector3(Random.Range(spawnLimitXLeft, spawnLimitXRight), spawnPosY, Random.Range(spawnLimitXLeft, spawnLimitXRight));
+
+        // instantiate ball at random spawn location
+        int r = Random.Range(0, 0);
+        Instantiate(ballPrefabs[r], spawnPos, ballPrefabs[0].transform.rotation);
+    } */
+
+}
