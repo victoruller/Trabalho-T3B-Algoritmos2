@@ -1,0 +1,51 @@
+//Mover o player
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+
+
+
+
+public class PlayerController : MonoBehaviour
+{
+   public int jogador;
+    float horizontalInput, verticalInput;
+    
+        float vspeed, turnspeed=150;
+        string vertical, horizontal;
+
+    void Start()
+    {
+        if(jogador == 1)
+        {
+            vspeed = 5;
+            turnspeed=150;
+            vertical="Vertical";
+            horizontal="Horizontal";
+        }
+        if(jogador == 2)
+        {
+            vspeed = 3;
+            turnspeed=150;
+            vertical="Vertical2";
+            horizontal="Horizontal2";
+        }
+
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //mover o veiculo para frente
+        verticalInput = Input.GetAxis(vertical);
+        transform.Translate(Vector3.forward * Time.deltaTime * vspeed * verticalInput);
+     
+
+        horizontalInput = Input.GetAxis(horizontal);
+        transform.Rotate(Vector3.up * Time.deltaTime * turnspeed * horizontalInput);
+     
+        
+    }
+}
